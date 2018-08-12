@@ -10,5 +10,5 @@ c) play with it, the buttons left right, reload and autoarrange should be your f
 
 d) Note that each board is self contained with their data, main board, layout and templates. There is true separation between the application and the configuration... in Excel... sorcery
 
-e) eventuall, try to read the documentation.. but not to worry, there is no documentation yet.
+e) eventually, try to read the documentation.. but not to worry, there is no documentation yet.
 
