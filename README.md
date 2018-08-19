@@ -2,7 +2,7 @@
 Poor man’s kanban (but much more).
 
 What is it:
-An excel spreadsheet, with macros, no special references needed, all in VBA, not an add-in
+- An excel spreadsheet, with macros, no special references needed, all in VBA, not an add-in
 
 What it does:
 - Renders sticky notes from a table, and also updates the table from the notes (if enabled).
@@ -21,9 +21,9 @@ Why:
 
 
 Features
-- two-way updating.. notes to board and board to note
+- two-way updating (notes to board and board to note).
 - works in Excel standard, not an add in, etc.
-- separated app from data
+- Separated app (the one you download here) from data (Board workbook).
 - version control, in the back it saves snapshots (except when using the fast buttons)
 - autoarrange feature gives you a sort of data driven visualisation, but still saves the shape position, so you can manually tweak
 - it renders in Excel online and ios app, so technically people can see and update the data or postit from a mobile. No macros on those, unfortunately. 
