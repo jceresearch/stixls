@@ -35,26 +35,16 @@ Features
 Quick guide to get you going:
 
 1. Open the spreadsheet, you should see a new Add-ins tab in the ribbon (once enabled the content etc). This spreadsheet is not an Add-in btw, but that is how Excel names a new a tab. This ribbon is created and deleted each time the xls is loaded/closed. Needless to say you need to enable the content. You are strongly suggested to check the code to your comfort before running in sensitive envirnments, the spreadsheet is given "as is", no warranties at all on any effect on your equipment.
-
 2. Go to that Add-ins tab and select File-> New Board, it will create a Demo board, fully functional.
-
 3. Play with it, start with using the buttons left /right /reload and autoarrange. The magnifier glass takes you to the corresponding note/row of the row/note selected.
-
 4. Try updating a note in [Board] and hitting refresh (the one with two arrows forming a circle), you should see the row having updated
-
 5. Try updating a row and hitting  [Table to Board]>[Refresh Fully from Table] 
-
 6. Try adding a row and the running [Refresh board from Table] to see what happens. Ctrl+P while shape is selected would attempt to place it as per template (if configured).
-
 7. If you move the cell to the completed column, it should update the status and colour once you hit Refresh button.
-
 8. Try copy-paste a note and update the reference number to a unique string.  Then hit [Board to Table] it will create a new row but tou still need to complete fields, the macro will tell you that.
-
 9. Try copy-paste a row into a new consecutive row (or insert one), try [Refresh Fully From Table] it should give you errors that the row is a duplicate and where is the issue. In short, you need to delete the SHID value and put a unique new value in the REV value in that row. Then hit [Refresh Fully From Table] and it should create a nice shiny note.
-
 10. Note that each board is self contained with their data, main board, layout and templates. There is true separation between the application and the configuration... in Excel... sorcery
-
-11 Eventually, read the documentation.. but no hurry, there is no documentation other than this doc yet.
+11. Eventually, read the documentation.. but no hurry, there is no documentation other than this doc yet.
 
 Some  concepts:
 1. Board workbooks have only one [Board] sheet.
