@@ -48,18 +48,18 @@ Quick guide to get you going:
 
 Some  concepts:
 1. Board workbooks have only one [Board] sheet.
-2. The application renders in the [Board] sheet any number of layouts, as configured in the Layout_config sheet. Layouts are combination of positioning, colouring, size , visibility , font rules.
-3. Each layout is based on one template but one template can be used by many layouts, for example, one Kanban template can be made into a layout that applies a RAG colour based on task status and includes lots of detail text, and another layout that has no colour coding and minimal task descriptions and hiding certain notes.
-4. Each template has two sheets, one for the look and feel and one for the data (_data). The template has a range named after the template name, and the template  name needs to be the same as the main template sheet. 
+2. The application renders in the [Board] sheet any number of "layouts". Layouts are a combination of the notes positioning, criteria for colouring, size , visibility , font rules, name, and other parameters that compose one "way of showing" the notes. They are configured in the [Layout_config] sheet
+3. Each "layout" needs to refer to one "template".  One template can be used by many layouts, for example, you can define one Kanban template, but have several layouts: One for RAG status, another where there is no colour coding,  the note has lots of data, another that hides "low priority" notes.
+4. Each template has two sheets, one for the look and feel [TemplateName] and one for the data [TemplateName_Data]. The template has to have the actual displayable area as a range named after the template name, and the template name needs to be the same as the main template sheet. See the demo board to see how it is meant to work. 
 5. The script parses each note as follows: 
       5.1 the first word to be the unique reference (REF column in Data tab) , 
       5.2 (space)
       5.3 Title field (configurable the column where it is saved) 
-      5.4 Then each line following the Field:Value format , 
+      5.4 Then each line following the Field:Value format  
       5.5 Anything not recognised goes to a notes field (configurable)
-      5.6 Appended to the note text, it would add the value stored in the equivalent cell of the [template] data sheet. ie a note whose top left corner is in board.cell(2,5) will be parsed and will have appended the text value of sheets(“TemplateName_data”).range(“TemplateName”).cells(2,5). Technically this is incorrect as the range is defined in the [TemplateName] tab but the macro reuses that range for both templatename and templatename_data sheets. 
-6. A mandatory hard coded field is SHID which stores the shape ID of the note.
+      5.6 Appended to the note text, the script would add the value stored in the equivalent cell of the [template] data sheet. ie a note whose top left corner is in board.cell(2,5) will be parsed and will have appended the text value of sheets(“TemplateName_data”).range(“TemplateName”).cells(2,5). Technically this is incorrect as the range is defined in the [TemplateName] tab but the macro reuses that range for both templatename and templatename_data sheets.  Therefore, positioning inferred values should be overriding a value on the note.
+6. SHID is mandatory column, where the script store the shape ID of the note.
 7. Some fields accept labels for colours or size. Check the code, eventually I will document here what are the options. 
 8. The retouch menu allows to apply “filters” to the current board but are not permanent. If you want them to be permanent then you need to use a layout 
 9. The configuration is stored at app_config, then board_config, then layout_config with increasingly limited scope.
-
+10. The sheet DataXY saves the cordinates of the shape, it also saves the size and zorder btw. Currently it would remember changes in size but does not handle zorder yet.
