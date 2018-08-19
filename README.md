@@ -2,15 +2,16 @@
 Poor man’s kanban (but much more).
 
 What is it:
-An excel file, with macros, no special references needed, all in VBA, not an add in
+An excel spreadsheet, with macros, no special references needed, all in VBA, not an add-in
 
 What it does:
-1. Renders sticky notes from a table, and also updates the table from the notes.
+1. Renders sticky notes from a table, and also updates the table from the notes (if enabled).
 2. Stricky speaking it is a visualisation tool, can be used for kanban or any layout
 3. You get one “Board” to render the notes,  but you can define and iterate through several layouts to show the data arranged in various ways, hiding them etc. See the demo board.
 4. Smartly,
- (if allowed) the notes can pick values from its position to update the data table. For example if a note is moved to the “completed” column, the next refresh would update the data field. See the template_data sheet in the demo board to understand how this works.
-5. Can iterate and generate a stand alone static export of the layouts ready for shsring.
+ (if enabled) the notes can pick values from its position to update the [Data] sheet. For example if a note is moved to a “completed” column, the next refresh would update the data field. See the template_data sheet in the demo board to understand how this works.
+5. Can render and export all layouts in a single
+sheet ready for shsring.
 
 
 Why:
