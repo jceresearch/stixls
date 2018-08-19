@@ -6,10 +6,9 @@ An excel spreadsheet, with macros, no special references needed, all in VBA, not
 
 What it does:
 1. Renders sticky notes from a table, and also updates the table from the notes (if enabled).
-2. Stricky speaking it is a visualisation tool, can be used for kanban or any layout
-3. You get one “Board” to render the notes,  but you can define and iterate through several layouts to show the data arranged in various ways, hiding them etc. See the demo board.
-4. Smartly,
- (if enabled) the notes can pick values from its position to update the [Data] sheet. For example if a note is moved to a “completed” column, the next refresh would update the data field. See the template_data sheet in the demo board to understand how this works.
+2. Stricky speaking, it is a visualisation tool, can be used for a kanban or any use of sticky notes.
+3. You get one “Board” to render the notes on,  but you can define and iterate through several "layouts" to show the data arranged in various ways, hiding them etc. See the demo board.
+4. Smartly, (if enabled) the notes can pick values from its position to update the [Data] sheet. For example if a note is moved to a “completed” column, the next refresh would update the data field. See the template_data sheet in the demo board to understand how this works.
 5. Can render and export all layouts in a single
 sheet ready for shsring.
 
@@ -28,32 +27,38 @@ Features
 - version control, in the back it saves snapshots (except when using the fast buttons)
 - autoarrange feature gives you a sort of data driven visualisation, but still saves the shape position, so you can manually tweak
 - it renders in Excel online and ios app, so technically people can see and update the data or postit from a mobile. No macros on those, unfortunately. 
-- export feature 
--  adding a row of data will generate a note next time you do “table to board” and a new (copy/paste) note will add a row and generally there are many controls to detect issues, not perfect but works well enough.
-- lots of rendering options, colour, hide, size, bold font, red text... based on conditions you can setup in the layout, and ultimately you can define in a column in excel with whatever formulae you see fit.
-- It can add an icon on the top right corner od the note based on the value of a field. See demo board, [Icons] sheet.
+- export features (File Menu)
+- adding a row of data will generate a note next time you do “Table to Board” and a new (copy/paste) note will add a row and generally there are many controls to detect issues, not perfect but works well enough.
+- Many rendering options: colour, visible, size, bold font, red text... based on conditions you can setup in the layout, and ultimately you can define in a column in excel with whatever formulae you see fit.
+- It can add an image on the top right corner of the note based on the value of a field. You need to paste the image in the sheet [Icons] and ensure the top right corner of the image is over a cell that has that value (e.g. "Red", or "Peter"). The script will pick the value from the [Data] sheet, and then search for it in the [Icons] sheet, and will take care of the rest.
 
+Quick guide to get going:
 
-How to use:
-a) open the spreadsheet, you should see a new Add-ins tab in the ribbon (once enabled the content etc). This spreadsheet is not an Add-in btw, but that is how Excel names a new a tab.
+a) open the spreadsheet, you should see a new Add-ins tab in the ribbon (once enabled the content etc). This spreadsheet is not an Add-in btw, but that is how Excel names a new a tab. This ribbon is created and deleted each time the xls is loaded/closed. Needless to say you need to enable the content. You are strongly suggested to check the code to your comfort before running in sensitive envirnments, the spreadsheet is given "as is", no warranties at all on any effect on your equipment.
 
-b) go to that Add-ins tab and select File-> New Board, it will create a demo board, fully functional.
+b) go to that Add-ins tab and select File-> New Board, it will create a Demo board, fully functional.
 
-c) play with it, the buttons left right, reload and autoarrange should be your first port of call
+c) play with it, start with using the buttons left /right /reload and autoarrange. The magnifier glass takes you to the corresponding note/row of the row/note selected.
 
-d) then try adding a note by adding a row and the running “refresh board from Table”
+d) try updating a note in [Board] and hitting refresh (the one with two arrows forming a circle), you should see the row having updated
 
-e) then try copy-paste a note and update the reference number to a umique string.  Then hit refresg data from board. it will create a new row but tou still need to
-complete fields, the macro will tell you that.
+e) Try updating a row and hitting  [Table to Board]>[Refresh Fully from Table] 
 
-e) Note that each board is self contained with their data, main board, layout and templates. There is true separation between the application and the configuration... in Excel... sorcery
+f) Try adding a row and the running [Refresh board from Table] to see what happens. Ctrl+P while shape is selected would attempt to place it as per template (if configured).
 
+g) If you move the cell to the completed column, it should update the status and colour once you hit Refresh button.
 
-f) eventually, read the documentation.. but no hurry, there is no documentation yet.
+h) Try copy-paste a note and update the reference number to a unique string.  Then hit [Board to Table] it will create a new row but tou still need to complete fields, the macro will tell you that.
+
+i) Try copy-paste a row into a new consecutive row (or insert one), try [Refresh Fully From Table] it should give you errors that the row is a duplicate and where is the issue. In short, you need to delete the SHID value and put a unique new value in the REV value in that row. Then hit [Refresh Fully From Table] and it should create a nice shiny note.
+
+j) Note that each board is self contained with their data, main board, layout and templates. There is true separation between the application and the configuration... in Excel... sorcery
+
+k) eventually, read the documentation.. but no hurry, there is no documentation other than this doc yet.
 
 Some  concepts:
 - Board workbooks have only one [Board] sheet.
-- The application renders in the Board any number of layouts, as configured in the Layout_config sheet. Layouts are combination of positioning, colouring, size , visibility , font rules.
+- The application renders in the [Board] sheet any number of layouts, as configured in the Layout_config sheet. Layouts are combination of positioning, colouring, size , visibility , font rules.
 - Each layout is based on one template but one template can be used by many layouts, for example, one Kanban template can be made into a layout that applies a RAG colour based on task status and includes lots of detail text, and another layout that has no colour coding and minimal task descriptions and hiding certain notes.
 - Each template has two sheets, one for the look and feel and one for the data (_data). The template has a range named after the template name, and the template  name needs to be the same as the main template sheet. 
 - The script parses each note as this: expects the first word to be the unique reference (REF column in Data tab) , the  the Title field (configurable) then each line following the Field:Value format , anything not recognised goes to a notes field (configurable)
