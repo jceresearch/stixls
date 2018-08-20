@@ -2,19 +2,19 @@
 Poor man’s kanban (but much more).
 
 What is it:
-- An excel spreadsheet, with macros, no special references needed, all in VBA, not an add-in
+- An excel spreadsheet, with VBA macros, no special references needed, not an add-in
 
 What it does:
 - Renders sticky notes from a table, and also updates the table from the notes (if enabled).
 - Stricky speaking, it is a visualisation tool, can be used for a kanban or any use of sticky notes.
 - You get one “Board” to render the notes on,  but you can define and iterate through several "layouts" to show the data arranged in various ways, hiding them etc. See the demo board.
-- Smartly, (if enabled) the notes can pick values from its position to update the [Data] sheet. For example if a note is moved to a “completed” column, the next refresh would update the data field. See the template_data sheet in the demo board to understand how this works.
+- Smartly, (if enabled) the notes can pick values from its position to update the [Data] sheet. For example if a note is moved to a “completed” column, the next refresh would update the data field. See the [Template1Data] sheet in the demo board to understand how this works.
 - Can render and export all layouts in a single
 sheet ready for shsring.
 
 
 Why:
-- because even the coolest cloud/mobile apps will not be allowed in corporate environments easily.
+- because even the coolest cloud/mobile apps will not be allowed in most corporate environment.
 - most kanban apps I’ve seen are too rigid with the arrangements of notes (just allow grouping by stages of the task) 
 - most postit/whiteboard apps doesn’t link to data or export anything structured out of them.
 
@@ -23,10 +23,10 @@ Why:
 Features
 - two-way updating (notes to board and board to note).
 - works in Excel standard, not an add in, etc.
-- Separated app (the one you download here) from data (Board workbook).
-- version control, in the back it saves snapshots (except when using the fast buttons)
-- autoarrange feature gives you a sort of data driven visualisation, but still saves the shape position, so you can manually tweak
-- it renders in Excel online and ios app, so technically people can see and update the data or postit from a mobile. No macros on those, unfortunately. 
+- Separate app (the one you download here) from data (Board workbooks).
+- version control, it saves snapshots when doing save to table (except when using the fast buttons)
+- autoarrange feature gives you a kind of data driven visualisation, but still saves the shape position, so you can manually tweak
+- it renders in Excel online/iOS app, so people can see and update the data or postit from a mobile. No macros on those, unfortunately. 
 - export features (File Menu)
 - adding a row of data will generate a note next time you do “Table to Board” and a new (copy/paste) note will add a row and generally there are many controls to detect issues, not perfect but works well enough.
 - Many rendering options: colour, visible, size, bold font, red text... based on conditions you can setup in the layout, and ultimately you can define in a column in excel with whatever formulae you see fit.
@@ -50,14 +50,14 @@ Some  concepts:
 1. Board workbooks have only one [Board] sheet.
 2. The application renders in the [Board] sheet any number of "layouts". Layouts are a combination of the notes positioning, criteria for colouring, size , visibility , font rules, name, and other parameters that compose one "way of showing" the notes. They are configured in the [Layout_config] sheet
 3. Each "layout" needs to refer to one "template".  One template can be used by many layouts, for example, you can define one Kanban template, but have several layouts: One for RAG status, another where there is no colour coding,  the note has lots of data, another that hides "low priority" notes.
-4. Each template has two sheets, one for the look and feel [TemplateName] and one for the data [TemplateName_Data]. The template has to have the actual displayable area as a range named after the template name, and the template name needs to be the same as the main template sheet. See the demo board to see how it is meant to work. 
+4. Each template has two sheets, one for the look and feel [TemplateName] and one for the data [TemplateNameData]. The template has to have the actual displayable area as a range named after the template name, and the template name needs to be the same as the main template sheet. See the demo board to see how it is meant to work. 
 5. The script parses each note as follows: 
       5.1 the first word to be the unique reference (REF column in Data tab) , 
       5.2 (space)
       5.3 Title field (configurable the column where it is saved) 
       5.4 Then each line following the Field:Value format  
       5.5 Anything not recognised goes to a notes field (configurable)
-      5.6 Appended to the note text, the script would add the value stored in the equivalent cell of the [template] data sheet. ie a note whose top left corner is in board.cell(2,5) will be parsed and will have appended the text value of sheets(“TemplateName_data”).range(“TemplateName”).cells(2,5). Technically this is incorrect as the range is defined in the [TemplateName] tab but the macro reuses that range for both templatename and templatename_data sheets.  Therefore, positioning inferred values should be overriding a value on the note.
+      5.6 Appended to the note text, the script would add the value stored in the equivalent cell of the [template] data sheet. ie a note whose top left corner is in board.cell(2,5) will be parsed and will have appended the text value of sheets(“TemplateNameData”).range(“TemplateName”).cells(2,5). Technically this is incorrect as the range is defined in the [TemplateName] tab but the macro reuses that range for both templatename and templatename_data sheets.  Therefore, positioning inferred values should be overriding a value on the note.
 6. SHID is mandatory column, where the script store the shape ID of the note.
 7. Some fields accept labels for colours or size. Check the code, eventually I will document here what are the options. 
 8. The retouch menu allows to apply “filters” to the current board but are not permanent. If you want them to be permanent then you need to use a layout 
