@@ -54,6 +54,7 @@ Some  concepts:
 3. Each "layout" needs to refer to one "template".  One template can be used by many layouts, for example, you can define one Kanban template, but have several layouts: One for RAG status, another where there is no colour coding,  the note has lots of data, another that hides "low priority" notes.
 4. Each template has two sheets, one for the look and feel [TemplateName] and one for the data [TemplateNameData]. The template has to have the actual displayable area as a range named after the template name, and the template name needs to be the same as the main template sheet. See the demo board to see how it is meant to work. 
 5. The script parses each note as follows: 
+
   5.1 the first word to be the unique reference (REF column in Data tab) , 
   5.2 (space)
   5.3 Title field (configurable the column where it is saved) 
