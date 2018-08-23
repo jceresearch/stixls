@@ -37,14 +37,16 @@ Quick guide to get you going:
 1. Open the spreadsheet, you should see a new Add-ins tab in the ribbon (once enabled the content etc). This spreadsheet is not an Add-in btw, but that is how Excel names a new a tab. This ribbon is created and deleted each time the xls is loaded/closed. Needless to say you need to enable the content. You are strongly suggested to check the code to your comfort before running in sensitive envirnments, the spreadsheet is given "as is", no warranties at all on any effect on your equipment.
 2. Go to that Add-ins tab and select File-> New Board, it will create a Demo board, fully functional.
 3. Play with it, start with using the buttons left /right /reload and autoarrange. The magnifier glass takes you to the corresponding note/row of the row/note selected.
-4. Try updating a note in [Board] and hitting refresh (the one with two arrows forming a circle), you should see the row having updated
-5. Try updating a row and hitting  [Table to Board]>[Refresh Fully from Table] 
-6. Try adding a row and the running [Refresh board from Table] to see what happens. Ctrl+P while shape is selected would attempt to place it as per template (if configured).
+4. Try updating a note in [Board] and hitting save button (the one with arrows curving down), you should see the row having updated
+5. Try updating a row and hitting  [Table to Board]>[Refresh Fully from Table] or the revert button (the one with arrow curving upwards)
+6. Try adding a row (copy>paste from existing) and the running [Refresh board from Table] to see what happens. 
+    You should get errors if the REF and ID are duplicates.
+    Eventually you should get a new shape
+    Select the shape and hit Ctrl+P , the macro will attempt to place it. See below how this is meant to work.
 7. If you move the cell to the completed column, it should update the status and colour once you hit Refresh button.
 8. Try copy-paste a note and update the reference number to a unique string.  Then hit [Board to Table] it will create a new row but tou still need to complete fields, the macro will tell you that.
-9. Try copy-paste a row into a new consecutive row (or insert one), try [Refresh Fully From Table] it should give you errors that the row is a duplicate and where is the issue. In short, you need to delete the SHID value and put a unique new value in the REV value in that row. Then hit [Refresh Fully From Table] and it should create a nice shiny note.
-10. Note that each board is self contained with their data, main board, layout and templates. There is true separation between the application and the configuration... in Excel... sorcery
-11. Eventually, read the documentation.. but no hurry, there is no documentation other than this doc yet.
+9. Note that each board is self contained with their data, main board, layout and templates. There is true separation between the application and the configuration... in Excel... sorcery
+10. Eventually, read the documentation.. but no hurry, there is no documentation other than this doc yet.
 
 Some  concepts:
 1. Board workbooks have only one [Board] sheet.
@@ -52,14 +54,15 @@ Some  concepts:
 3. Each "layout" needs to refer to one "template".  One template can be used by many layouts, for example, you can define one Kanban template, but have several layouts: One for RAG status, another where there is no colour coding,  the note has lots of data, another that hides "low priority" notes.
 4. Each template has two sheets, one for the look and feel [TemplateName] and one for the data [TemplateNameData]. The template has to have the actual displayable area as a range named after the template name, and the template name needs to be the same as the main template sheet. See the demo board to see how it is meant to work. 
 5. The script parses each note as follows: 
-      5.1 the first word to be the unique reference (REF column in Data tab) , 
-      5.2 (space)
-      5.3 Title field (configurable the column where it is saved) 
-      5.4 Then each line following the Field:Value format  
-      5.5 Anything not recognised goes to a notes field (configurable)
-      5.6 Appended to the note text, the script would add the value stored in the equivalent cell of the [template] data sheet. ie a note whose top left corner is in board.cell(2,5) will be parsed and will have appended the text value of sheets(“TemplateNameData”).range(“TemplateName”).cells(2,5). Technically this is incorrect as the range is defined in the [TemplateName] tab but the macro reuses that range for both templatename and templatename_data sheets.  Therefore, positioning inferred values should be overriding a value on the note.
+  5.1 the first word to be the unique reference (REF column in Data tab) , 
+  5.2 (space)
+  5.3 Title field (configurable the column where it is saved) 
+  5.4 Then each line following the Field:Value format  
+  5.5 Anything not recognised goes to a notes field (configurable)
+  5.6 Appended to the note text, the script would add the value stored in the equivalent cell of the [template] data sheet. ie a note whose top left corner is in board.cell(2,5) will be parsed and will have appended the text value of sheets(“TemplateNameData”).range(“TemplateName”).cells(2,5). Technically this is incorrect as the range is defined in the [TemplateName] tab but the macro reuses that range for both templatename and templatename_data sheets.  Therefore, positioning inferred values should be overriding a value on the note.
 6. SHID is mandatory column, where the script store the shape ID of the note.
 7. Some fields accept labels for colours or size. Check the code, eventually I will document here what are the options. 
 8. The retouch menu allows to apply “filters” to the current board but are not permanent. If you want them to be permanent then you need to use a layout 
 9. The configuration is stored at app_config, then board_config, then layout_config with increasingly limited scope.
 10. The sheet DataXY saves the cordinates of the shape, it also saves the size and zorder btw. Currently it would remember changes in size but does not handle zorder yet.
+11. Auto positioning of shapes works based on matching the content of the field LayoutAutoArrange in [LayoutConfig], looks for that field and tries to find that value somewhere in the [TemplateNameData] sheet. Things are a bit more complex than that, but that is the gist.
