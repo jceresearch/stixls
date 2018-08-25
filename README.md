@@ -54,12 +54,12 @@ Some  concepts:
 3. Each "layout" needs to refer to one "template".  One template can be used by many layouts, for example, you can define one Kanban template, but have several layouts: One for RAG status, another where there is no colour coding,  the note has lots of data, another that hides "low priority" notes.
 4. Each template has two sheets, one for the look and feel [TemplateName] and one for the data [TemplateNameData]. The template has to have the actual displayable area as a range named after the template name, and the template name needs to be the same as the main template sheet. See the demo board to see how it is meant to work. 
 5. The script parses each note as follows:
-5.1 the first word to be the unique reference (REF column in Data tab) , 
-5.2 (space)
-5.3 Title field (configurable the column where it is saved) 
-5.4 Then each line following the Field:Value format  
-5.5 Anything not recognised goes to a notes field (configurable)
-5.6 Scripts appends the value stored in the equivalent cell of the [TemplateNameData]  sheet. ie a note whose top left corner is in board.cell(2,5) will be parsed and will have appended the text value of sheets(“TemplateNameData”).range(“TemplateName”).cells(2,5). Technically this is incorrect as the range is defined in the [TemplateName] tab but the macro reuses that range for both templatename and templatename_data sheets.  Therefore, values picked by positioning overrides the value on the note itself as they are picked last.
+    5.1 the first word to be the unique reference (REF column in Data tab) , 
+    5.2 (space)
+    5.3 Title field (configurable the column where it is saved) 
+    5.4 Then each line following the Field:Value format  
+    5.5 Anything not recognised goes to a notes field (configurable)
+    5.6 Scripts appends the value stored in the equivalent cell of the [TemplateNameData]  sheet. ie a note whose top left corner is in board.cell(2,5) will be parsed and will have appended the text value of sheets(“TemplateNameData”).range(“TemplateName”).cells(2,5). Technically this is incorrect as the range is defined in the [TemplateName] tab but the macro reuses that range for both templatename and templatename_data sheets.  Therefore, values picked by positioning overrides the value on the note itself as they are picked last.
 6. SHID is mandatory column, where the script store the shape ID of the note.
 7. Some fields accept labels for colours or size. Check the code, eventually I will document here what are the options. 
 8. The retouch menu allows to apply “filters” to the current board but are not permanent. If you want them to be permanent then you need to use a layout 
