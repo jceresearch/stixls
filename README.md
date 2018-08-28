@@ -21,8 +21,10 @@ Why:
 
 
 Features
-- two-way updating (notes to board and board to note).
-- works in Excel standard, not an add in, etc.
+- Automatically creates a toolbar,  menu and icons to navigate the options. 
+- Configurable, you dont need to tweak VBA. That said you need to be quite comfortable with Excel and its inners.
+- Two-way updating (notes > board and board > note).
+- Works in Excel standard, it is not an add in
 - Separate app (the one you download here) from data (Board workbooks).
 - version control, it saves snapshots when doing save to table (except when using the fast buttons)
 - autoarrange feature gives you a kind of data driven visualisation, but still saves the shape position, so you can manually tweak
