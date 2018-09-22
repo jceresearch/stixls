@@ -2,7 +2,7 @@
 Poor man’s kanban (but much more).
 
 What is it:
-- An excel spreadsheet, with VBA macros, no special references needed, not an add-in
+- An Excel spreadsheet, with VBA macros, no special references needed, not an add-in
 
 You are strongly suggested to check the code to your comfort before running it with highly confidential data, the spreadsheet is published "as is", no warranties at all on any effect on your data or equipment.
 
