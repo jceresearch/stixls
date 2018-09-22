@@ -29,13 +29,13 @@ Features
 - Works in Excel standard, it is not an add in
 - Separate app (the one you download here) from data (Board workbooks).
 - Version control, it saves snapshots when doing "save to table" menu option (Note: not when using the fast buttons)
-- Autoarrange notes feature gives you data driven positioning, but still saves each shape position, so you can manually tweak
+- Autoarrange feature to position notes based on underlying data.
 - Renders in Excel 365/iOS app, so users can see/update the data or postit from a mobile.  
-- Export features (File Menu) to generate static rendering of all the layouts and the data.
+- Export features to generate a static copy macro-less of all the layouts and the data.
 - If you add a row of data it will create  a note next time you do “Table to Board” 
 - If you copy>paste a note, it will add a row, thought you need to ensure all fields are valid, not perfect.
 - Many rendering options: colour, visible, size, bold font, red text... based on conditions you can setup in the layout, and ultimately you can define in a column in excel with whatever formulae you see fit.
-- Add an image on the top right corner of the note based on the value of a field. You need to paste the image in the sheet [Icons] and ensure the top left corner of the image is over a cell that has that value (e.g. "Red", or "Peter"). The script will pick the value from the [Data] sheet, and then search for it in the [Icons] sheet, and will take care of the rest.
+- Add an image on the top right corner of the note based on the value of a field. 
 
 Quick guide to get you going:
 
@@ -73,3 +73,4 @@ Some  concepts:
 9. The configuration is stored at app_config, then board_config, then layout_config with increasingly limited scope.
 10. The sheet DataXY saves the cordinates of the shape, it also saves the size and zorder btw. Currently it would remember changes in size but does not handle zorder yet.
 11. Auto positioning of shapes works based on matching the content of the field LayoutAutoArrange in [LayoutConfig], looks for that field and tries to find that value somewhere in the [TemplateNameData] sheet. Things are a bit more complex than that, but that is the gist.
+12. To add icons to the notes, you need to paste the image in the sheet [Icons] and ensure the top left corner of the image is over a cell that has the desirded value value (e.g. "Red", or "Peter"). The script will read the TemplateLayout to know which field to check, then pick the value from the [Data] sheet, and then search for it in the [Icons] sheet, and will take care of the rest.
