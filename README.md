@@ -24,7 +24,7 @@ Why:
 
 Features
 - Automatically creates a toolbar,  menu and icons to navigate the options. 
-- Configurable, you dont need to tweak VBA. That said you need to be quite comfortable with Excel and its inners.
+- Configurable, you dont need to tweak the macros/VBA. That said, you need to be quite comfortable with Excel and its inners.
 - Two-way updating (notes > board and board > note).
 - Works in Excel standard, it is not an add in
 - Separate app (the one you download here) from data (Board workbooks).
@@ -40,11 +40,11 @@ Features
 Quick guide to get you going:
 
 1. Open the spreadsheet, you should see a new Add-ins tab in the ribbon (once enabled the content etc).  
-2. Go to that Add-ins tab and select File-> New Board, it will create a Demo board, fully functional.
+2. Go to that Add-ins tab and select File-> New Board, it will create a Demo board, fully functional, after about a minute.
 3. Navigate with the buttons left /right /reload and autoarrange. 
 4. Select a note and click the magnifier glass to take you to the corresponding note/row 
 5. Select a row in teh [Data] tab, and click the magnifier glass to go to the corresponding note.
-6. Update the text of a note in [Board] and hit save button (the one with arrows curving down), you should see the corresponding row updated. 
+6. Update the text of a note in [Board] and hit save button (the one with arrows curving down), you should see the corresponding row updated.
 7. Try updating a row and hitting  [Table to Board]>[Refresh Fully from Table] or the revert button (the one with arrow curving upwards), you should see the note reflecting that change.
 8. Try adding a row (copy>paste from existing) and the running [Refresh board from Table] to see what happens. 
     You should get errors if the REF and ID are duplicates.
@@ -53,8 +53,10 @@ Quick guide to get you going:
 9. If you move the cell to the completed column, it should update the status and colour once you hit Refresh button.
 10. Try copy-paste a note and update the reference number to a unique string.  Then hit [Board to Table] it will create a new row but tou still need to complete fields, the macro will tell you that.
 11. Try the export feature under the custom File menu. You can create a full render of all the layouts and the data.
+12. If you go to the folder where the board was created you should see a subfolder with versions, if you use the menu options to save. 
 
 Some  concepts:
+
 0. This spreadsheet is not an Add-in, even if the toolbar name says so. This toolbar/ribbon is created and deleted each time the xls is loaded/closed. 
 1. Board workbooks have only one [Board] sheet.
 2. The application renders in the [Board] sheet any number of "layouts". Layouts are a combination of the notes positioning, criteria for colouring, size , visibility , font rules, name, and other parameters that compose one "way of showing" the notes. They are configured in the [Layout_config] sheet
