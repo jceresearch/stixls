@@ -1,24 +1,16 @@
 # stixls
-Poor man’s kanban (but much more).
+Poor man’s kanban and sticky notes visualisation tool
 
 What is it:
-- An Excel spreadsheet, with VBA macros, no special references needed, not an add-in
-
-You are strongly suggested to check the code to your comfort before running it with highly confidential data, the spreadsheet is published "as is", no warranties at all on any effect on your data or equipment.
+An Excel spreadsheet, with VBA macros, no special references needed, *not* an add-in (despite name in ribbon)
 
 What it does:
 - Renders sticky notes from a table, and also updates the table from the notes (if enabled).
-- Stricky speaking, it is a visualisation tool, can be used for a kanban or any use of sticky notes.
+- Can be used for a kanban or any use of sticky notes.
 - You get one “Board” to render the notes on,  but you can define and iterate through several "layouts" to show the data arranged in various ways, hiding them etc. See the demo board.
 - Smartly, (if enabled) the notes can pick values from its position to update the [Data] sheet. For example if a note is moved to a “completed” column, the next refresh would update the data field. See the [Template1Data] sheet in the demo board to understand how this works.
-- Can render and export all layouts in a single
-sheet ready for sharing.
+- Can render and export all layouts in a single sheet ready for sharing.
 
-
-Why:
-- because even the coolest cloud/mobile apps will not be allowed in most corporate environment.
-- most kanban apps I’ve seen are too rigid with the arrangements of notes (just allow grouping by stages of the task) 
-- most postit/whiteboard apps doesn’t link to data or export anything structured out of them.
 
 
 
