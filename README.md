@@ -8,7 +8,7 @@ What it does:
 - Renders sticky notes from a table, and also updates the table from the notes (if enabled).
 - Can be used for a kanban or any use of sticky notes.
 - You get one “Board” to render the notes on,  but you can define and iterate through several "layouts" to show the data arranged in various ways, hiding them etc. See the demo board.
-- Smartly, (if enabled) the notes can pick values from its position to update the [Data] sheet. For example if a note is moved to a “completed” column, the next refresh would update the data field. See the [Template1Data] sheet in the demo board to understand how this works.
+- Smartly, (if enabled) the notes can pick values from its position to update the [Data] sheet. For example if a note is moved to a “completed” column, the next refresh would update the data field. See the [Template1Data] sheet in the demo board to understand how this works. To be honest, lately because I have many layouts in each, to avoid accidents I just  set them as read only, just to display and use the search/magnifying glass to quickly jump to the data record and edit. But it can do 2-way updating.
 - Can render and export all layouts in a single sheet ready for sharing.
 
 
