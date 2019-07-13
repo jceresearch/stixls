@@ -35,7 +35,7 @@ Quick guide to get you going:
 2. Go to that Add-ins tab and select File-> New Board, it will create a Demo board, fully functional, after about a minute.
 3. Navigate with the buttons left /right /reload and autoarrange. 
 4. Select a note and click the magnifier glass to take you to the corresponding note/row 
-5. Select a row in teh [Data] tab, and click the magnifier glass to go to the corresponding note.
+5. Select a row in the [Data] tab, and click the magnifier glass to go to the corresponding note.
 6. Update the text of a note in [Board] and hit save button (the one with arrows curving down), you should see the corresponding row updated.
 7. Try updating a row and hitting  [Table to Board]>[Refresh Fully from Table] or the revert button (the one with arrow curving upwards), you should see the note reflecting that change.
 8. Try adding a row (copy>paste from existing) and the running [Refresh board from Table] to see what happens. 
